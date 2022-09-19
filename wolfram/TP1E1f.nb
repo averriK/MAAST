@@ -1,0 +1,390 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     16785,        382]
+NotebookOptionsPosition[     15382,        349]
+NotebookOutlinePosition[     15865,        366]
+CellTagsIndexPosition[     15822,        363]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Trabajo Pr\[AAcute]ctico 1", "Section",
+ CellChangeTimes->{{3.872496325990996*^9, 
+  3.872496330079894*^9}},ExpressionUUID->"88b525ad-1461-4b0e-8922-\
+aaf5e52a3447"],
+
+Cell[CellGroupData[{
+
+Cell["Ejercicio 1f", "Subsection",
+ CellChangeTimes->{{3.872496334244508*^9, 3.87249633619713*^9}, {
+   3.8724963794882393`*^9, 3.872496414565775*^9}, {3.872496913323024*^9, 
+   3.8724969158973436`*^9}, 
+   3.872505376548711*^9},ExpressionUUID->"c0a00d2d-8811-4153-8276-\
+c7f3ef762762"],
+
+Cell[CellGroupData[{
+
+Cell["Source Code", "CodeText",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.872492137326444*^9, 3.872492146513902*^9}, {
+   3.872492194585801*^9, 3.87249221904161*^9}, 
+   3.8724971109052267`*^9},ExpressionUUID->"10a96d8c-5364-482b-85be-\
+fe3c0ffb552a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", 
+   RowBox[{"\[Omega]o", ",", " ", "tn"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Omega]o", "[", "f_", "]"}], " ", ":=", " ", 
+   RowBox[{"2", "*", "\[Pi]", "*", "f"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tn", "[", "\[CapitalDelta]t_", "]"}], ":=", 
+   RowBox[{"Range", "[", 
+    RowBox[{"0", ",", "4", ",", "\[CapitalDelta]t"}], "]"}]}], 
+  ";"}]}], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{3.8724971109062243`*^9},
+ CellLabel->
+  "In[2281]:=",ExpressionUUID->"cb5d43df-573f-4be6-8f8a-c00d018d0992"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", 
+    RowBox[{"s", ",", "sn", ",", "f1", ",", "f2", ",", "\[CapitalDelta]t"}], 
+    "]"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"analytic", " ", "signal"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"s", "[", 
+     RowBox[{"f1_", ",", "f2_", ",", "t_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Cos", "[", 
+      RowBox[{
+       RowBox[{"\[Omega]o", "[", "f1", "]"}], "*", "t"}], "]"}], "+", 
+     RowBox[{"Cos", "[", 
+      RowBox[{
+       RowBox[{"\[Omega]o", "[", "f2", "]"}], "*", "t"}], "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"sampled", " ", "signal"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sn", "[", 
+    RowBox[{"f1_", ",", "f2_", ",", "\[CapitalDelta]t_"}], "]"}], ":=", 
+   RowBox[{"s", "[", 
+    RowBox[{"f1", ",", "f2", ",", 
+     RowBox[{"tn", "[", "\[CapitalDelta]t", "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fmin", "=", 
+   RowBox[{"1", "/", "50"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fmax", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"df", "=", "fmin"}], ";"}]}], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.872386650384716*^9, 3.872386665196165*^9}, {
+   3.872387474870545*^9, 3.87238752277186*^9}, 3.8723957755397863`*^9, {
+   3.8723960137586083`*^9, 3.8723960218561783`*^9}, {3.87239607100356*^9, 
+   3.872396076427514*^9}, {3.8723961087442513`*^9, 3.872396109831376*^9}, {
+   3.872407657559562*^9, 3.87240765976051*^9}, 3.87241099214148*^9, 
+   3.8724159518902316`*^9, {3.8724160720295577`*^9, 3.8724160823696337`*^9}, 
+   3.8724168057504845`*^9, {3.8724179429542847`*^9, 3.872418017426503*^9}, 
+   3.8724180919414167`*^9, {3.8724181290124216`*^9, 3.8724181821595373`*^9}, {
+   3.8724183208010387`*^9, 3.8724183514956026`*^9}, {3.8724184065786324`*^9, 
+   3.872418446355864*^9}, {3.8724185542597313`*^9, 3.872418591304187*^9}, {
+   3.8724186254678946`*^9, 3.87241863484059*^9}, {3.8724187971533055`*^9, 
+   3.872418810487387*^9}, {3.8724188509234467`*^9, 3.872418860078418*^9}, {
+   3.8724212481672664`*^9, 3.8724213705108814`*^9}, {3.8724214435920596`*^9, 
+   3.872421522435412*^9}, {3.8724215726865635`*^9, 3.872421634810563*^9}, {
+   3.8724218798964157`*^9, 3.872421879951251*^9}, {3.8724219112635965`*^9, 
+   3.8724219197078238`*^9}, 3.872421981973621*^9, 3.8724221200392036`*^9, {
+   3.8724222304042673`*^9, 3.8724222427513695`*^9}, {3.8724222789460945`*^9, 
+   3.872422279356986*^9}, {3.8724224242140384`*^9, 3.872422561030327*^9}, 
+   3.872422595894539*^9, {3.872422978459319*^9, 3.872423048753619*^9}, {
+   3.8724231113688884`*^9, 3.8724231257817097`*^9}, {3.8724232005066643`*^9, 
+   3.872423208535158*^9}, {3.872423336041009*^9, 3.872423336367146*^9}, 
+   3.8724234501778965`*^9, {3.8724235601198373`*^9, 3.872423586645248*^9}, {
+   3.8724236194786134`*^9, 3.872423623180709*^9}, {3.872423689699801*^9, 
+   3.872423726201409*^9}, {3.8724237724549046`*^9, 3.8724237731051598`*^9}, {
+   3.87242391027147*^9, 3.8724239516529694`*^9}, {3.87242403702346*^9, 
+   3.8724240482484617`*^9}, {3.872424149227112*^9, 3.8724241790128827`*^9}, {
+   3.872430077408925*^9, 3.87243009528421*^9}, {3.8724301511599555`*^9, 
+   3.8724301708000307`*^9}, {3.8724302842484465`*^9, 
+   3.8724303261962705`*^9}, {3.8724304215401*^9, 3.8724304316146555`*^9}, {
+   3.8724304740422473`*^9, 3.872430477269759*^9}, {3.872430572824645*^9, 
+   3.8724306363980055`*^9}, {3.8724308179755464`*^9, 3.8724308196522903`*^9}, 
+   3.8724308750274644`*^9, {3.8724309059783096`*^9, 3.8724309343299847`*^9}, {
+   3.8724791028595343`*^9, 3.872479142107814*^9}, {3.8724823548149157`*^9, 
+   3.872482386948733*^9}, {3.8724825936912694`*^9, 3.872482656510308*^9}, {
+   3.872482793033978*^9, 3.8724828123911715`*^9}, 3.872482860454624*^9, {
+   3.8724829918419056`*^9, 3.872483034096287*^9}, {3.872483118899642*^9, 
+   3.872483138978659*^9}, {3.8724831970074377`*^9, 3.8724832161633015`*^9}, {
+   3.8724832559758368`*^9, 3.8724833393012156`*^9}, {3.872483370402126*^9, 
+   3.8724833852019606`*^9}, {3.8724834214891863`*^9, 
+   3.8724834224462533`*^9}, {3.872483476924333*^9, 3.87248348676763*^9}, {
+   3.8724837585350456`*^9, 3.872483818304685*^9}, {3.872483966806901*^9, 
+   3.8724840039392667`*^9}, {3.8724840370921307`*^9, 
+   3.8724841085700655`*^9}, {3.8724842721153207`*^9, 
+   3.8724843058845873`*^9}, {3.872484455247756*^9, 3.8724845353381677`*^9}, {
+   3.8724845715965724`*^9, 3.8724846729434347`*^9}, {3.872484707786933*^9, 
+   3.8724847187684035`*^9}, {3.872484751524031*^9, 3.872484772922741*^9}, {
+   3.872484916238332*^9, 3.872484953766808*^9}, {3.87248529456359*^9, 
+   3.872485312023697*^9}, {3.8724853639762936`*^9, 3.872485404140674*^9}, {
+   3.872485438402553*^9, 3.872485490958796*^9}, {3.8724855982295675`*^9, 
+   3.872485694869527*^9}, {3.8724857536296654`*^9, 3.8724858309033995`*^9}, {
+   3.8724858762974415`*^9, 3.872485912940189*^9}, {3.8724861710581245`*^9, 
+   3.8724862197131195`*^9}, {3.8724862840780487`*^9, 
+   3.8724863573131156`*^9}, {3.872486445492423*^9, 3.8724864537005787`*^9}, {
+   3.8724904387110777`*^9, 3.8724905134409447`*^9}, {3.872490578796712*^9, 
+   3.872490643713372*^9}, {3.872490680781592*^9, 3.872490691332844*^9}, {
+   3.872491202913969*^9, 3.8724912162297125`*^9}, {3.872491407913521*^9, 
+   3.8724914493912735`*^9}, {3.872491484270631*^9, 3.872491488461316*^9}, {
+   3.872491533030914*^9, 3.8724915565291486`*^9}, {3.872491640161213*^9, 
+   3.872491643328429*^9}, {3.8724918662674327`*^9, 3.872491895443476*^9}, {
+   3.8724922490895376`*^9, 3.87249228357211*^9}, 3.872495349208181*^9, {
+   3.8724954452331467`*^9, 3.872495487033609*^9}, {3.8724955446985073`*^9, 
+   3.872495551657058*^9}, {3.8724956347935348`*^9, 3.8724956474222455`*^9}, {
+   3.8724969558826876`*^9, 3.872496959662611*^9}, {3.872497092251294*^9, 
+   3.872497110909217*^9}, {3.8724971600612164`*^9, 3.8724971605379505`*^9}},
+ CellLabel->"In[2284]:=",
+ CellID->324762801,ExpressionUUID->"c007e8fd-a902-42d6-a369-bd50b943d90c"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"GraphicsColumn", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"sn", "[", 
+           RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], ",", 
+          RowBox[{"sn", "[", 
+           RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}]}], "}"}],
+         ",", 
+        RowBox[{"PlotRange", "\[Rule]", "Automatic"}], ",", 
+        RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+        RowBox[{"Joined", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"False", ",", "True"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ListLogPlot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Abs", "[", 
+          RowBox[{"Fourier", "[", 
+           RowBox[{"sn", "[", 
+            RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], "]"}], 
+          "]"}], "^", "2"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
+        RowBox[{"Joined", "\[Rule]", "False"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Spectrogram", "[", 
+       RowBox[{
+        RowBox[{"ShortTimeFourier", "[", 
+         RowBox[{"sn", "[", 
+          RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], "]"}], 
+        ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"Length", "[", 
+              RowBox[{"tn", "[", "\[CapitalDelta]t", "]"}], "]"}]}], "}"}], 
+           ",", "Automatic"}], "}"}]}], ",", 
+        RowBox[{"Frame", "\[Rule]", "True"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"WaveletScalogram", "[", 
+       RowBox[{"ContinuousWaveletTransform", "[", 
+        RowBox[{"sn", "[", 
+         RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], "]"}], 
+       "]"}]}], "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f1", ",", 
+       RowBox[{"1", "/", "10"}]}], "}"}], ",", "fmin", ",", "fmax", ",", 
+     "df"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f2", ",", 
+       RowBox[{"1", "/", "12"}]}], "}"}], ",", "fmin", ",", "fmax", ",", 
+     "df"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalDelta]t", ",", 
+       RowBox[{"1", "/", 
+        RowBox[{"(", 
+         RowBox[{"2", "*", "fmax"}], ")"}]}]}], "}"}], ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"100", "*", "fmax"}], ")"}]}], ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "fmax"}], ")"}]}], ",", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"100", "*", "fmax"}], ")"}]}]}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{
+  3.8724970327498736`*^9, {3.8724970846957083`*^9, 3.872497110910215*^9}, {
+   3.8724972187983537`*^9, 3.872497226480008*^9}},
+ CellLabel->
+  "In[2290]:=",ExpressionUUID->"2ddbcd8d-cd67-4ed0-9e34-e0edf1731562"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`f1$$ = Rational[1, 10], $CellContext`f2$$ = 
+    Rational[1, 12], $CellContext`\[CapitalDelta]t$$ = Rational[1, 10], 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f1$$], 
+       Rational[1, 10]}, 
+      Rational[1, 50], 5, 
+      Rational[1, 50]}, {{
+       Hold[$CellContext`f2$$], 
+       Rational[1, 12]}, 
+      Rational[1, 50], 5, 
+      Rational[1, 50]}, {{
+       Hold[$CellContext`\[CapitalDelta]t$$], 
+       Rational[1, 10]}, 
+      Rational[1, 500], 
+      Rational[1, 10], 
+      Rational[1, 500]}}, Typeset`size$$ = {316.2582609619392, {348., 352.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`f1$$ = Rational[1, 10], $CellContext`f2$$ = 
+        Rational[1, 12], $CellContext`\[CapitalDelta]t$$ = Rational[1, 10]}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> GraphicsColumn[{
+         ListPlot[{
+           $CellContext`sn[$CellContext`f1$$, $CellContext`f2$$, \
+$CellContext`\[CapitalDelta]t$$], 
+           $CellContext`sn[$CellContext`f1$$, $CellContext`f2$$, \
+$CellContext`\[CapitalDelta]t$$]}, PlotRange -> Automatic, GridLines -> 
+          Automatic, Joined -> {False, True}], 
+         ListLogPlot[Abs[
+            Fourier[
+             $CellContext`sn[$CellContext`f1$$, $CellContext`f2$$, \
+$CellContext`\[CapitalDelta]t$$]]]^2, PlotRange -> All, GridLines -> 
+          Automatic, Joined -> False], 
+         Spectrogram[
+          ShortTimeFourier[
+           $CellContext`sn[$CellContext`f1$$, $CellContext`f2$$, \
+$CellContext`\[CapitalDelta]t$$]], PlotRange -> {{0, 
+             Length[
+              $CellContext`tn[$CellContext`\[CapitalDelta]t$$]]}, Automatic}, 
+          Frame -> True], 
+         WaveletScalogram[
+          ContinuousWaveletTransform[
+           $CellContext`sn[$CellContext`f1$$, $CellContext`f2$$, \
+$CellContext`\[CapitalDelta]t$$]]]}], 
+      "Specifications" :> {{{$CellContext`f1$$, 
+          Rational[1, 10]}, 
+         Rational[1, 50], 5, 
+         Rational[1, 50]}, {{$CellContext`f2$$, 
+          Rational[1, 12]}, 
+         Rational[1, 50], 5, 
+         Rational[1, 50]}, {{$CellContext`\[CapitalDelta]t$$, 
+          Rational[1, 10]}, 
+         Rational[1, 500], 
+         Rational[1, 10], 
+         Rational[1, 500]}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{590., {378.1340332872234, 383.8659667127766}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.8724954670140533`*^9, 3.87249548831114*^9}, 
+   3.8724955582620134`*^9, 3.872495611002761*^9, 3.872495647833144*^9, {
+   3.8724970200625334`*^9, 3.872497033067066*^9}, 3.8724971133557034`*^9, 
+   3.8724971717182617`*^9, 3.8724972271731606`*^9, 3.8725053842839117`*^9, 
+   3.8725701387433186`*^9},
+ CellLabel->
+  "Out[2290]=",ExpressionUUID->"da6f6f6a-6c5d-4c62-954d-e3cc07d05285"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1141.2, 585.6},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"CloudPublishPath"->"/Published/Wavelets/TP1E1f.nb"},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"62745a7d-efa5-4f80-9af0-251e7a8952a7"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 171, 3, 67, "Section",ExpressionUUID->"88b525ad-1461-4b0e-8922-aaf5e52a3447"],
+Cell[CellGroupData[{
+Cell[776, 29, 286, 5, 54, "Subsection",ExpressionUUID->"c0a00d2d-8811-4153-8276-c7f3ef762762"],
+Cell[CellGroupData[{
+Cell[1087, 38, 286, 5, 38, "CodeText",ExpressionUUID->"10a96d8c-5364-482b-85be-fe3c0ffb552a",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[1376, 45, 638, 17, 67, "Input",ExpressionUUID->"cb5d43df-573f-4be6-8f8a-c00d018d0992",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[2017, 64, 6143, 104, 162, "Input",ExpressionUUID->"c007e8fd-a902-42d6-a369-bd50b943d90c",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellID->324762801],
+Cell[8163, 170, 3371, 89, 238, "Input",ExpressionUUID->"2ddbcd8d-cd67-4ed0-9e34-e0edf1731562",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[11537, 261, 3805, 83, 781, "Output",ExpressionUUID->"da6f6f6a-6c5d-4c62-954d-e3cc07d05285",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
