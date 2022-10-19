@@ -1,0 +1,76 @@
+---
+title: "MAAST"
+author: "A. Verri"
+format: html
+editor: visual
+---
+
+## Práctica MAAST
+
+```{r echo=FALSE, message=FALSE,warning=FALSE}
+library(wavelets)
+library(WaveletComp)
+```
+
+### Espectro de Potencia - `WaveletComp`
+
+```{r message=FALSE,include=FALSE}
+X = data.table::data.table(x=periodic.series(start.period = 50, length = 1000) + 0.2*rnorm(1000))
+WT <- WaveletComp::analyze.wavelet(
+  my.data=X, my.series=colnames(X)[1],loess.span = 0,dt = 1, dj = 1/250,lowerPeriod = 16,upperPeriod = 128,make.pval = TRUE, n.sim = 10)
+
+
+```
+
+```{r message=FALSE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Potencia dwt(x)"
+#|   - "Reconstrucción Señal temporal x(t)"
+wt.image(WT=WT, color.key = "quantile", n.levels = 250,
+legend.params = list(lab = "wavelet power levels", mar = 4.7))
+reconstruct(WT=WT, plot.waves = FALSE, lwd = c(1,2),
+legend.coords = "bottomleft", ylim = c(-1.8, 1.8),verbose = FALSE, show.legend = FALSE)
+```
+
+### Espectros de Potencia - `biwavelet`
+
+Ejemplo paquete
+
+```{r}
+library(biwavelet)
+N <- 1000
+x1 <- WaveletComp::periodic.series(start.period = 0, end.period = 2.5*pi,length = N) 
+x1=WaveletComp::periodic.series(start.period = 0, end.period = 2*5*pi,length = N) 
+x2=WaveletComp::periodic.series(start.period = 0, end.period = 2*15*pi,length = N) # sin(seq(from=0, to=2*15*pi, length=1000))
+x3=WaveletComp::periodic.series(start.period = 0, end.period = 2*40*pi,length = N) # sin(seq(from=0, to=2*40*pi, length=1000))
+x <- t1+t2+t3
+t <- 1:N
+DT <- data.table(t=t,x=x) |> as.matrix()
+WT <- biwavelet::wt(DT)
+
+
+```
+
+```{r message=FALSE}
+#| layout-nrow: 1
+#| fig-cap: 
+#|   - "Espectro de Potencia dwt(x)"
+
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT, plot.cb = TRUE, plot.phase = FALSE)
+```
+
+$$
+s(t)=cos(2 \pi t + 0.5 sin(5 t)) \\ 0\leq t\leq 20
+$$
+
+```{r}
+dt <- 1/100
+t <- seq(0,20,by=dt)
+s <- cos(2*pi*t+0.5*sin(5*t))
+DT <- data.table(t=t,s=s) |> as.matrix()
+WT <- biwavelet::wt(DT)
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT, plot.cb = TRUE, plot.phase = FALSE)
+```

@@ -1,0 +1,304 @@
+---
+title: "MAAST"
+author: "A. Verri"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r echo=FALSE, message=FALSE,warning=FALSE}
+library(biwavelet)
+library(data.table)
+library(ggplot2)
+
+```
+
+## Potencia Espectral
+
+### Ejercicio 1:
+
+$$s(t)=cos(2 \pi t + 0.5 sin(5 t)) \ \ \  0\leq t \leq 20$$
+
+```{r message=FALSE,include=FALSE}
+dt <- 1/10
+t <- seq(0,20,by=dt)
+s <- cos(2*pi*t+0.5*sin(5*t))
+DT <- data.table(t=t,X=s) |> as.matrix()
+WT1 <- biwavelet::wt(DT, mother = "morlet",dj=1/16)
+WT2 <- biwavelet::wt(DT, mother = "paul",dj=1/16)
+WT3 <- biwavelet::wt(DT, mother = "dog",dj=1/16)
+
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Potencia dwt(x)"
+#|   - "Señal temporal s(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT1, plot.cb = TRUE, plot.phase = FALSE,main="morlet")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT2, plot.cb = TRUE, plot.phase = FALSE,main="paul")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT3, plot.cb = TRUE, plot.phase = FALSE,main="dog")
+ggplot() + geom_line(aes(x=t,y=s),color="blue",size=1) +  labs(x = "t ",y = "s(t)")
+```
+
+### Ejercicio 2:
+
+$$s(t)=e^{-0.01t} cos(\frac{2\pi}{32}t ) \ \ \  0\leq t \leq 512$$
+
+```{r message=FALSE,include=FALSE}
+dt <- 3 #32/10
+t <- seq(0,512,by=dt)
+s <- exp(-0.01*t)*cos(2*pi*t/32)
+DT <- data.table(t=t,s=s) |> as.matrix()
+WT1 <- biwavelet::wt(DT, mother = "morlet",dj=1/16)
+WT2 <- biwavelet::wt(DT, mother = "paul",dj=1/16)
+WT3 <- biwavelet::wt(DT, mother = "dog",dj=1/16)
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Potencia wt(x)"
+#|   - "Señal temporal s(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT1, plot.cb = TRUE, plot.phase = FALSE,main="morlet")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT2, plot.cb = TRUE, plot.phase = FALSE,main="paul")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT3, plot.cb = TRUE, plot.phase = FALSE,main="dog")
+ggplot() + geom_line(aes(x=t,y=s),color="blue",size=1) +  labs(x = "t ",y = "s(t)")+theme_bw()
+```
+
+### Ejercicio 3:
+
+$$
+s(t)= cos(2\pi t/31.25) \ \ t\leq 250 \\ s(t)= cos(2\pi t/62.5) \ \ t > 250
+$$
+
+```{r message=FALSE,include=FALSE}
+dt <- 1
+t <- seq(0,500,by=dt)
+s <- ifelse(t<=250,cos(2*pi*t/31.25),cos(2*pi*t/61.5))
+DT <- data.table(t=t,s=s) |> as.matrix()
+WT1 <- biwavelet::wt(DT, mother = "morlet",dj=1/16)
+WT2 <- biwavelet::wt(DT, mother = "paul",dj=1/16)
+WT3 <- biwavelet::wt(DT, mother = "dog",dj=1/16)
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Potencia dwt(x)"
+#|   - "Señal temporal x(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT1, plot.cb = TRUE, plot.phase = FALSE,main="morlet")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT2, plot.cb = TRUE, plot.phase = FALSE,main="paul")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT3, plot.cb = TRUE, plot.phase = FALSE,main="dog")
+ggplot() + geom_line(aes(x=t,y=s),color="blue",size=1) +  labs(x = "t ",y = "s(t)")+theme_bw()
+```
+
+### Ejercicio 4:
+
+$$
+s(t)= cos(2\pi t/10)+cos(2\pi t/12) \ \ 0\leq t \leq 500
+$$
+
+```{r message=FALSE,include=FALSE}
+dt <- 1/100
+t <- seq(0,200,by=dt)
+s <- cos(2*pi*t/10)+cos(2*pi*t/31)
+DT <- data.table(t=t,s=s) |> as.matrix()
+WT1 <- biwavelet::wt(DT, mother = "morlet",dj=1/16)
+WT2 <- biwavelet::wt(DT, mother = "paul",dj=1/16)
+WT3 <- biwavelet::wt(DT, mother = "dog",dj=1/16)
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 4
+#| fig-cap: 
+#|   - "Espectro de Potencia dwt(x)"
+#|   - "Señal temporal x(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT1, plot.cb = TRUE, plot.phase = FALSE,main="morlet")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT2, plot.cb = TRUE, plot.phase = FALSE,main="paul")
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT3, plot.cb = TRUE, plot.phase = FALSE,main="dog")
+ggplot() + geom_line(aes(x=t,y=s),color="blue",size=1) +  labs(x = "t ",y = "s(t)")+theme_bw()
+```
+
+### Ejercicio 5:
+
+```{r message=FALSE,include=FALSE}
+dt <- 1/10
+t <- seq(0,500,by=dt)
+s <- ifelse(t<=250,cos(2*pi*t/31.25),cos(2*pi*t/61.5))
+DT <- data.table(t=t,s=s) |> as.matrix()
+WT <- biwavelet::wt(DT, mother = "morlet",dj=1/16)
+
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Potencia dwt(x)"
+#|   - "Ruido Blanco x(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT, plot.cb = TRUE, plot.phase = TRUE)
+ggplot() + geom_line(aes(x=t,y=s),color="blue",size=1) +  labs(x = "t ",y = "s(t)")+theme_bw()
+```
+
+## Coherencia
+
+### Coherencia: Efecto Frecuencia
+
+```{r message=FALSE,include=FALSE}
+dt <- 0.005
+t <- seq(0,2,by=dt)
+X <- cos(2*pi*10*t)*(t>=0.5 & t<1.1)+cos(2*pi*50*t)*(t>=0.2 & t<1.4)+0.25*rnorm(length(t))
+Y <- sin(2*pi*10*t)*(t>=0.6 & t<1.2)+cos(2*pi*50*t)*(t>=0.4 & t<1.6)+0.15*rnorm(length(t))
+DTX <- data.table(t=t,s=X) |> as.matrix()
+DTY <- data.table(t=t,s=Y) |> as.matrix()
+WTC <- biwavelet::wtc(DTX,DTY, mother = "morlet",nrands = 20)
+
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Coherencia wtc(X,Y)"
+#|   - "Señales temporales x(t),y(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WTC, plot.cb = TRUE, plot.phase = TRUE,main="Efecto frecuencia")
+ggplot() + geom_line(aes(x=t,y=X),color="blue",size=1) + geom_line(aes(x=t,y=Y),color="red",size=0.7) +theme_bw()
+```
+
+### Coherencia: Efecto Fase
+
+```{r message=FALSE,include=FALSE}
+dt <- 1/10
+t <- seq(0,1000,by=dt)
+X <- sin(t)+0.2*rnorm(length(t))
+Y <- c(sin(t[0:250]),sin(t[251:500]-pi/4),sin(t[501:750]-pi/2),sin(t[751:1000]-pi))+0.2*rnorm(length(t))
+DTX <- data.table(t=t,s=X) |> as.matrix()
+DTY <- data.table(t=t,s=Y) |> as.matrix()
+WTC <- biwavelet::wtc(DTX,DTY, mother = "morlet",nrands = 20)
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Coherencia wtc(X,Y)"
+#|   - "Señales temporales x(t),y(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WTC, plot.cb = TRUE, plot.phase = TRUE,main="Efecto Fase")
+ggplot() + geom_line(aes(x=t,y=X),color="blue",size=1) + geom_line(aes(x=t,y=Y),color="red",size=0.7) +theme_bw()
+```
+
+### Coherencia: Efecto Amplitud
+
+```{r message=FALSE,include=FALSE}
+dt <- 1
+t <- seq(0,1000,by=dt)
+X <- c(sin(2*t[0:250]),sin(2*t[251:500]),sin(4*t[501:750]),sin(8*t[751:1000]))+0.2*rnorm(length(t))
+Y <- c(sin(2*t[0:250]),sin(2*t[251:500])/2,sin(4*t[501:750])*3,sin(8*t[751:1000])/4)+0.2*rnorm(length(t))
+DTX <- data.table(t=t,s=X) |> as.matrix()
+DTY <- data.table(t=t,s=Y) |> as.matrix()
+WTC <- biwavelet::wtc(DTX,DTY, mother = "morlet",nrands = 20)
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 2
+#| fig-cap: 
+#|   - "Espectro de Coherencia wtc(X,Y)"
+#|   - "Señales temporales x(t),y(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WTC, plot.cb = TRUE, plot.phase = TRUE,main="Efecto Fase")
+ggplot() + geom_line(aes(x=t,y=X),color="blue",size=1) + geom_line(aes(x=t,y=Y),color="red",size=0.7) +theme_bw()
+```
+
+## Wavelet cruzadas vs Coherencia
+
+### Ejercicio 1
+
+```{r message=FALSE,include=FALSE}
+dt <- 1/2
+t <- seq(0,500,by=dt)
+X <- sin(2*t*pi/5)+rnorm(length(t))*0.10
+Y <- sin(2*t*pi/5+.4)+rnorm(length(t))*0.10
+DTX <- data.table(t=t,s=X) |> as.matrix()
+DTY <- data.table(t=t,s=Y) |> as.matrix()
+WTC <- biwavelet::wtc(DTX,DTY, mother = "morlet",dj=1/16,nrands = 20)
+XWT <- biwavelet::xwt(DTX,DTY, mother = "morlet",dj=1/16)
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE,warning=FALSE}
+#| layout-nrow: 3
+#| fig-cap: 
+#|   - "Espectro de Coherencia wtc(X,Y)"
+#|   - "Espectro cruzado xwt(X,Y)"
+#|   - "Señales temporales x(t),y(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WTC, plot.cb = TRUE, plot.phase = TRUE,main="WTC")
+
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(XWT, plot.cb = TRUE, plot.phase = TRUE,main="XWT")
+
+ggplot() + geom_line(aes(x=t,y=X),color="blue",size=1) + geom_line(aes(x=t,y=Y),color="red",size=0.7) +theme_bw()
+```
+
+### Ejercicio 2
+
+```{r message=FALSE,include=FALSE}
+dt <- 1/10
+t <- seq(0,500,by=dt)
+X <- sin(2*t*pi/5)+rnorm(length(t))*0.10
+Y <- rnorm(length(t))*0.10
+DTX <- data.table(t=t,s=X) |> as.matrix()
+DTY <- data.table(t=t,s=Y) |> as.matrix()
+WTC <- biwavelet::wtc(DTX,DTY, mother = "morlet",dj=1/16,nrands = 20)
+XWT <- biwavelet::xwt(DTX,DTY, mother = "morlet",dj=1/16)
+```
+
+```{r echo=FALSE,message=FALSE,include=TRUE}
+#| layout-nrow: 3
+#| fig-cap: 
+#|   - "Espectro de Coherencia wtc(X,Y)"
+#|   - "Espectro cruzado xwt(X,Y)"
+#|   - "Señales temporales x(t),y(t)"
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WTC, plot.cb = TRUE, plot.phase = TRUE,main="WTC")
+
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(XWT, plot.cb = TRUE, plot.phase = TRUE,main="XWT")
+
+ggplot() + geom_line(aes(x=t,y=X),color="blue",size=1) + geom_line(aes(x=t,y=Y),color="red",size=0.7) +theme_bw()
+```
+
+## Terremotos
+```{r}
+DT <- fread("data/R.csv") 
+DTZ <- DT[-893,.(tn,AT.UD)]
+DTY <- DT[-893,.(tn,AT.NS)]
+DTX <- DT[-893,.(tn,AT.EW)]
+WTx <- biwavelet::wt(DTX, mother = "morlet",dj=1/16)
+WTy <- biwavelet::wt(DTY, mother = "morlet",dj=1/16)
+WTz <- biwavelet::wt(DTZ, mother = "morlet",dj=1/16)
+WTh <- biwavelet::wtc(DTX,DTY, mother = "morlet",dj=1/16,nrands = 20)
+WTv <- biwavelet::wtc(DTX,DTZ, mother = "morlet",dj=1/16,nrands = 20)
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WT, plot.cb = TRUE, plot.phase = FALSE,main="morlet")
+
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WTh, plot.cb = TRUE, plot.phase = FALSE,main="X-Y")
+
+par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+plot(WTv, plot.cb = TRUE, plot.phase = FALSE,main="X-Z")
+```
+
