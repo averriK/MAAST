@@ -282,6 +282,7 @@ ggplot() + geom_line(aes(x=t,y=X),color="blue",size=1) + geom_line(aes(x=t,y=Y),
 ```
 
 ## Terremotos
+
 ```{r}
 DT <- fread("data/R.csv") 
 DTZ <- DT[-893,.(tn,AT.UD)]
@@ -301,4 +302,3 @@ plot(WTh, plot.cb = TRUE, plot.phase = FALSE,main="X-Y")
 par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
 plot(WTv, plot.cb = TRUE, plot.phase = FALSE,main="X-Z")
 ```
-
