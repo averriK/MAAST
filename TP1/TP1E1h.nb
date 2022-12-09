@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17224,        388]
-NotebookOptionsPosition[     15819,        355]
-NotebookOutlinePosition[     16304,        372]
-CellTagsIndexPosition[     16261,        369]
+NotebookDataLength[     46259,        820]
+NotebookOptionsPosition[     43872,        777]
+NotebookOutlinePosition[     44356,        794]
+CellTagsIndexPosition[     44313,        791]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -59,7 +59,7 @@ Cell[BoxData[{
   ";"}]}], "Input",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.},
  CellChangeTimes->{3.8724971109062243`*^9},
- CellLabel->"In[1]:=",ExpressionUUID->"cb5d43df-573f-4be6-8f8a-c00d018d0992"],
+ CellLabel->"In[51]:=",ExpressionUUID->"cb5d43df-573f-4be6-8f8a-c00d018d0992"],
 
 Cell[BoxData[{
  RowBox[{
@@ -68,41 +68,26 @@ Cell[BoxData[{
     RowBox[{"s", ",", "sn", ",", "f1", ",", "f2", ",", "\[CapitalDelta]t"}], 
     "]"}], ";"}], "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"analytic", " ", "signal"}], " ", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"s", "[", 
-     RowBox[{"f1_", ",", "f2_", ",", "t_"}], "]"}], ":=", 
-    RowBox[{
-     RowBox[{"Cos", "[", 
-      RowBox[{
-       RowBox[{"\[Omega]o", "[", "f1", "]"}], "*", "t"}], "]"}], "+", 
-     RowBox[{"Cos", "[", 
-      RowBox[{
-       RowBox[{"\[Omega]o", "[", "f2", "]"}], "*", "t"}], "]"}]}]}], ";"}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
    RowBox[{"sampled", " ", "signal"}], " ", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"sn", "[", 
-    RowBox[{"f1_", ",", "f2_", ",", "\[CapitalDelta]t_"}], "]"}], ":=", 
+    RowBox[{"f1_", ",", "f2_", ",", "a_", ",", "\[CapitalDelta]t_"}], "]"}], ":=", 
    RowBox[{
     RowBox[{"s", "[", 
      RowBox[{"f1", ",", "f2", ",", 
       RowBox[{"tn", "[", "\[CapitalDelta]t", "]"}]}], "]"}], "+", 
-    RowBox[{"RandomVariate", "[", 
-     RowBox[{
-      RowBox[{"NormalDistribution", "[", "]"}], ",", 
-      RowBox[{"Length", "[", 
-       RowBox[{"tn", "[", "\[CapitalDelta]t", "]"}], "]"}]}], "]"}]}]}], 
+    RowBox[{"a", "*", 
+     RowBox[{"RandomVariate", "[", 
+      RowBox[{
+       RowBox[{"NormalDistribution", "[", "]"}], ",", 
+       RowBox[{"Length", "[", 
+        RowBox[{"tn", "[", "\[CapitalDelta]t", "]"}], "]"}]}], "]"}]}]}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"fmin", "=", 
-   RowBox[{"1", "/", "50"}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"fmin", "=", "1"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"fmax", "=", "5"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"fmax", "=", "50"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"df", "=", "fmin"}], ";"}]}], "Input",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.},
@@ -171,8 +156,8 @@ Cell[BoxData[{
    3.8724969558826876`*^9, 3.872496959662611*^9}, {3.872497092251294*^9, 
    3.872497110909217*^9}, {3.8724971600612164`*^9, 3.8724971605379505`*^9}, {
    3.872581223547038*^9, 3.8725812604707017`*^9}, {3.87258129760367*^9, 
-   3.872581383360572*^9}, 3.8725814278311806`*^9},
- CellLabel->"In[4]:=",
+   3.872581383360572*^9}, 3.8725814278311806`*^9, {3.872695039228179*^9, 
+   3.8726950425078297`*^9}, {3.8726952123319254`*^9, 3.8726952295648613`*^9}},
  CellID->324762801,ExpressionUUID->"c007e8fd-a902-42d6-a369-bd50b943d90c"],
 
 Cell[BoxData[
@@ -188,8 +173,8 @@ Cell[BoxData[
           RowBox[{"sn", "[", 
            RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], ",", 
           RowBox[{"sn", "[", 
-           RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}]}], "}"}],
-         ",", 
+           RowBox[{"f1", ",", "f2", ",", "a", ",", "\[CapitalDelta]t"}], 
+           "]"}]}], "}"}], ",", 
         RowBox[{"PlotRange", "\[Rule]", "Automatic"}], ",", 
         RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
         RowBox[{"Joined", "\[Rule]", 
@@ -202,8 +187,8 @@ Cell[BoxData[
          RowBox[{"Abs", "[", 
           RowBox[{"Fourier", "[", 
            RowBox[{"sn", "[", 
-            RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], "]"}], 
-          "]"}], "^", "2"}], ",", 
+            RowBox[{"f1", ",", "f2", ",", "a", ",", "\[CapitalDelta]t"}], 
+            "]"}], "]"}], "]"}], "^", "2"}], ",", 
         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
         RowBox[{"GridLines", "\[Rule]", "Automatic"}], ",", 
         RowBox[{"Joined", "\[Rule]", "False"}]}], "]"}], ",", 
@@ -212,8 +197,8 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"ShortTimeFourier", "[", 
          RowBox[{"sn", "[", 
-          RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], "]"}], 
-        ",", 
+          RowBox[{"f1", ",", "f2", ",", "a", ",", "\[CapitalDelta]t"}], "]"}],
+          "]"}], ",", 
         RowBox[{"PlotRange", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
@@ -227,21 +212,24 @@ Cell[BoxData[
       RowBox[{"WaveletScalogram", "[", 
        RowBox[{"ContinuousWaveletTransform", "[", 
         RowBox[{"sn", "[", 
-         RowBox[{"f1", ",", "f2", ",", "\[CapitalDelta]t"}], "]"}], "]"}], 
-       "]"}]}], "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}], 
-   ",", "\[IndentingNewLine]", 
+         RowBox[{"f1", ",", "f2", ",", "a", ",", "\[CapitalDelta]t"}], "]"}], 
+        "]"}], "]"}]}], "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", 
+    "]"}], ",", "\[IndentingNewLine]", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"f1", ",", 
-       RowBox[{"1", "/", "10"}]}], "}"}], ",", "fmin", ",", "fmax", ",", 
-     "df"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"f1", ",", "1"}], "}"}], ",", "fmin", ",", "fmax", ",", "df"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"f2", ",", 
-       RowBox[{"1", "/", "12"}]}], "}"}], ",", "fmin", ",", "fmax", ",", 
-     "df"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"f2", ",", "5"}], "}"}], ",", "fmin", ",", "fmax", ",", "df"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "1"}], "}"}], ",", "0", ",", "2", ",", "0.1"}], "}"}],
+    ",", "\[IndentingNewLine]", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"{", 
@@ -262,36 +250,32 @@ Cell[BoxData[
  CellGroupingRules->{"GroupTogetherGrouping", 10000.},
  CellChangeTimes->{
   3.8724970327498736`*^9, {3.8724970846957083`*^9, 3.872497110910215*^9}, {
-   3.8724972187983537`*^9, 3.872497226480008*^9}},
- CellLabel->"In[10]:=",ExpressionUUID->"2ddbcd8d-cd67-4ed0-9e34-e0edf1731562"],
+   3.8724972187983537`*^9, 3.872497226480008*^9}, {3.8726950583922634`*^9, 
+   3.872695060088992*^9}, {3.8726952351722565`*^9, 
+   3.872695280448876*^9}},ExpressionUUID->"2ddbcd8d-cd67-4ed0-9e34-\
+e0edf1731562"],
 
 Cell[BoxData[
  TagBox[
   StyleBox[
-   DynamicModuleBox[{$CellContext`f1$$ = Rational[
-    109, 25], $CellContext`f2$$ = Rational[
-    167, 50], $CellContext`\[CapitalDelta]t$$ = Rational[3, 250], 
-    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
-    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
-    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
-       Hold[$CellContext`f1$$], 
-       Rational[1, 10]}, 
-      Rational[1, 50], 5, 
-      Rational[1, 50]}, {{
-       Hold[$CellContext`f2$$], 
-       Rational[1, 12]}, 
-      Rational[1, 50], 5, 
-      Rational[1, 50]}, {{
+   DynamicModuleBox[{$CellContext`f1$$ = 17, $CellContext`f2$$ = 
+    26, $CellContext`\[CapitalDelta]t$$ = Rational[1, 100], Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`f1$$], 1}, 1, 50, 1}, {{
+       Hold[$CellContext`f2$$], 5}, 1, 50, 1}, {{
        Hold[$CellContext`\[CapitalDelta]t$$], 
-       Rational[1, 10]}, 
-      Rational[1, 500], 
-      Rational[1, 10], 
-      Rational[1, 500]}}, Typeset`size$$ = {316.2582609619392, {348., 352.}}, 
-    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+       Rational[1, 100]}, 
+      Rational[1, 5000], 
+      Rational[1, 100], 
+      Rational[1, 5000]}}, Typeset`size$$ = {
+    30.668602105898135`, {348., 352.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, 
-      "Variables" :> {$CellContext`f1$$ = Rational[1, 10], $CellContext`f2$$ = 
-        Rational[1, 12], $CellContext`\[CapitalDelta]t$$ = Rational[1, 10]}, 
+      "Variables" :> {$CellContext`f1$$ = 1, $CellContext`f2$$ = 
+        5, $CellContext`\[CapitalDelta]t$$ = Rational[1, 100]}, 
       "ControllerVariables" :> {}, 
       "OtherVariables" :> {
        Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
@@ -320,18 +304,14 @@ $CellContext`\[CapitalDelta]t$$]], PlotRange -> {{0,
           ContinuousWaveletTransform[
            $CellContext`sn[$CellContext`f1$$, $CellContext`f2$$, \
 $CellContext`\[CapitalDelta]t$$]]]}], 
-      "Specifications" :> {{{$CellContext`f1$$, 
-          Rational[1, 10]}, 
-         Rational[1, 50], 5, 
-         Rational[1, 50]}, {{$CellContext`f2$$, 
-          Rational[1, 12]}, 
-         Rational[1, 50], 5, 
-         Rational[1, 50]}, {{$CellContext`\[CapitalDelta]t$$, 
-          Rational[1, 10]}, 
-         Rational[1, 500], 
-         Rational[1, 10], 
-         Rational[1, 500]}}, "Options" :> {}, "DefaultOptions" :> {}],
-     ImageSizeCache->{590., {378.1340332872234, 383.8659667127766}},
+      "Specifications" :> {{{$CellContext`f1$$, 1}, 1, 50, 
+         1}, {{$CellContext`f2$$, 5}, 1, 50, 
+         1}, {{$CellContext`\[CapitalDelta]t$$, 
+          Rational[1, 100]}, 
+         Rational[1, 5000], 
+         Rational[1, 100], 
+         Rational[1, 5000]}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{304., {378.1340332872234, 383.8659667127766}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -347,16 +327,458 @@ $CellContext`\[CapitalDelta]t$$]]]}],
    3.8724955582620134`*^9, 3.872495611002761*^9, 3.872495647833144*^9, {
    3.8724970200625334`*^9, 3.872497033067066*^9}, 3.8724971133557034`*^9, 
    3.8724971717182617`*^9, 3.8724972271731606`*^9, 3.8725053842839117`*^9, 
-   3.8725701387433186`*^9, 3.8725813973305387`*^9, 3.8725937024282513`*^9},
- CellLabel->"Out[10]=",ExpressionUUID->"b172e99b-8c72-44ed-94bb-31ff76907287"]
-}, Open  ]]
+   3.8725701387433186`*^9, 3.8725813973305387`*^9, 3.8725937024282513`*^9, 
+   3.8726950048252068`*^9, {3.8726950473597746`*^9, 3.8726950630645933`*^9}},
+ CellLabel->"Out[60]=",ExpressionUUID->"4fdf73bd-0217-4343-8c6a-47c4cb594b35"]
+}, Open  ]],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Fourier", "fftl", 
+   "\"Argument \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"2\\\", \\\"+\\\
+\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}]}], \
+\\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"4\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"25\\\"], \\\"]\\\"}], \\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"2\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{\\\"\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\"}], \\\",\
+\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"+\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"4\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"11\\\", \\\" \\\", \\\
+\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \
+\\\"}\\\"}]\\) is not a non-empty list or rectangular array of numeric \
+quantities.\"", 2, 67, 51, 19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8726952139124517`*^9},
+ CellLabel->"",ExpressionUUID->"f61fd5e5-2767-4413-be5f-a327abe20bd2"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Fourier", "fftl", 
+   "\"Argument \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"2.`16.\\\", \\\
+\"+\\\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1.`16.\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`16.\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", \
+RowBox[{\\\"0.41896315457240189891101327830649867862`16.\\\", \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1.`16.\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`16.\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"1.52794149629347444932110181065341849955`16.\\\"}], \\\"+\\\", RowBox[{\\\
+\"aRandomVariate\\\", \\\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \
+\\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", \\\"1.`16.\\\"}], \\\"]\\\"}], \\\",\
+\\\", \\\"401.`16.\\\"}], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"5\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{\\\"0.23888269029517387713140309224604628651`16.\\\", \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1.`16.\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`16.\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"1.51811404570768529935695051073290837969`16.\\\"}], \\\"+\\\", RowBox[{\\\
+\"aRandomVariate\\\", \\\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \
+\\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", \\\"1.`16.\\\"}], \\\"]\\\"}], \\\",\
+\\\", \\\"401.`16.\\\"}], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \
+\\\"}\\\"}]\\) is not a non-empty list or rectangular array of numeric \
+quantities.\"", 2, 67, 52, 19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.872695213982936*^9},
+ CellLabel->"",ExpressionUUID->"5f2bd422-78b9-45eb-bdf3-80084f3106a2"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Fourier", "fftl", 
+   "\"Argument \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{RowBox[{\\\"2.`\\\", \\\"\[VeryThinSpace]\\\"}], \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"0.4189631545724019`\\\", \\\"\
+\[VeryThinSpace]\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"1.5279414962934745`\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \
+\\\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", \
+RowBox[{\\\"0.`\\\", \\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \
+\\\"401.`\\\"}], \\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"0.810645413842547`\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \
+\\\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", \
+RowBox[{\\\"0.`\\\", \\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \
+\\\"401.`\\\"}], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"0.5428038695635584`\\\", \\\"\[VeryThinSpace]\\\"}], \
+\\\"+\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\
+\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \\\"1\\\", \\\"\
+\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{RowBox[{RowBox[{\\\"\[LeftSkeleton]\\\", \\\"21\\\", \\\"\
+\[RightSkeleton]\\\"}], \\\"\[VeryThinSpace]\\\"}], \\\"+\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"0.7939038442497506`\\\", \\\"\[VeryThinSpace]\\\"}], \
+\\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"0.23888269029517387`\\\", \\\"\
+\[VeryThinSpace]\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"1.5181140457076854`\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \
+\\\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", \
+RowBox[{\\\"0.`\\\", \\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \
+\\\"401.`\\\"}], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \
+\\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \\\"}\\\"}]\\) is not a non-empty \
+list or rectangular array of numeric quantities.\"", 2, 67, 53, 
+   19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.872695214000922*^9},
+ CellLabel->"",ExpressionUUID->"85ec8f9a-a145-45ea-a86b-1c13f7d5fdc1"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General", "stop", 
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"Fourier\\\", \
+\\\"::\\\", \\\"fftl\\\"}], \\\"MessageName\\\"]\\) will be suppressed during \
+this calculation.\"", 2, 67, 54, 19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.872695214015654*^9},
+ CellLabel->"",ExpressionUUID->"34a460b1-40f7-4907-bc31-2be2919540ea"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ListLogPlot", "lpn", 
+   "\"\\!\\(\\*SuperscriptBox[RowBox[{\\\"Abs\\\", \\\"[\\\", \
+RowBox[{\\\"Fourier\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{RowBox[{\\\"2.`\\\", \\\"\[VeryThinSpace]\\\"}], \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"0.4189631545724019`\\\", \\\"\
+\[VeryThinSpace]\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \\\"7\\\", \\\"\
+\[RightSkeleton]\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"1.5181140457076854`\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \
+\\\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", \
+RowBox[{\\\"0.`\\\", \\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \
+\\\"401.`\\\"}], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \
+\\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \\\"}\\\"}], \\\"]\\\"}], \
+\\\"]\\\"}], \\\"2\\\"]\\) is not a list of numbers or pairs of numbers.\"", 
+   2, 67, 55, 19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8726952140425415`*^9},
+ CellLabel->"",ExpressionUUID->"aa6001b2-8957-4e8b-bb16-96ea89f036d9"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ListLogPlot", "lpn", 
+   "\"\\!\\(\\*SuperscriptBox[RowBox[{\\\"Abs\\\", \\\"[\\\", \
+RowBox[{\\\"Fourier\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{RowBox[{RowBox[{\\\"2.`\\\", \\\"\[VeryThinSpace]\\\"}], \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"0.4189631545724019`\\\", \\\"\
+\[VeryThinSpace]\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0.`\\\", \
+\\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401.`\\\"}], \
+\\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \\\"7\\\", \\\"\
+\[RightSkeleton]\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"1.5181140457076854`\\\"}], \\\"+\\\", RowBox[{\\\"aRandomVariate\\\", \
+\\\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", \
+RowBox[{\\\"0.`\\\", \\\",\\\", \\\"1.`\\\"}], \\\"]\\\"}], \\\",\\\", \
+\\\"401.`\\\"}], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \
+\\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \\\"}\\\"}], \\\"]\\\"}], \
+\\\"]\\\"}], \\\"2\\\"]\\) is not a list of numbers or pairs of numbers.\"", 
+   2, 67, 56, 19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8726952140734587`*^9},
+ CellLabel->"",ExpressionUUID->"ba1294f5-aa81-4bd3-ab65-73376f95ef2a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ShortTimeFourier", "data", 
+   "\"\\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"2\\\", \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}]}], \
+\\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"4\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"25\\\"], \\\"]\\\"}], \\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"2\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{\\\"\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\"}], \\\",\
+\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"+\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"4\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"11\\\", \\\" \\\", \\\
+\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \
+\\\"}\\\"}]\\) is not a real-valued vector.\"", 2, 67, 57, 
+   19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.872695214092408*^9},
+ CellLabel->"",ExpressionUUID->"f77d613b-bf24-4c8a-b9d4-a718357656b4"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Spectrogram", "data", 
+   "\"\\!\\(\\*RowBox[{\\\"ShortTimeFourier\\\", \\\"[\\\", \
+RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"2\\\", \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}]}], \
+\\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"4\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"25\\\"], \\\"]\\\"}], \\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \\\"3\\\", \\\"\
+\[RightSkeleton]\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\
+\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\
+\\\", \\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \
+\\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\
+\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"4\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"11\\\", \\\" \\\", \\\
+\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \\\"}\\\"}], \
+\\\"]\\\"}]\\) is not a real-valued vector.\"", 2, 67, 58, 
+   19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.872695214108365*^9},
+ CellLabel->"",ExpressionUUID->"9ec53346-b06d-4f3f-8db8-c5aeb0fd65c6"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "ContinuousWaveletTransform", "nvec", 
+   "\"Argument \\!\\(\\*RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"2\\\", \\\"+\\\
+\", RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}]}], \
+\\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"4\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"25\\\"], \\\"]\\\"}], \\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"2\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\"}], \\\",\\\", \
+RowBox[{\\\"\[LeftSkeleton]\\\", \\\"1\\\", \\\"\[RightSkeleton]\\\"}], \\\",\
+\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"+\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"4\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"11\\\", \\\" \\\", \\\
+\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \
+\\\"}\\\"}]\\) is not a non-empty list or vector of numeric quantities, \
+sound, or sampled sound list.\"", 2, 67, 59, 19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.8726952141194057`*^9},
+ CellLabel->"",ExpressionUUID->"f36e435a-4956-458f-b29d-303033b07843"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "WaveletScalogram", "wd", 
+   "\"First argument \\!\\(\\*RowBox[{\\\"ContinuousWaveletTransform\\\", \
+\\\"[\\\", RowBox[{\\\"{\\\", RowBox[{RowBox[{\\\"2\\\", \\\"+\\\", \
+RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}]}], \
+\\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"4\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"25\\\"], \\\"]\\\"}], \\\"-\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[\\\"\[Pi]\\\", \
+\\\"50\\\"], \\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{\\\"\[LeftSkeleton]\\\", \\\"3\\\", \\\"\
+\[RightSkeleton]\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\
+\"[\\\", RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\
+\\\", \\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \
+\\\"]\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"3\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\
+\\\"}], \\\"+\\\", RowBox[{\\\"Sin\\\", \\\"[\\\", \
+FractionBox[RowBox[{\\\"7\\\", \\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\
+\\\"}]}], \\\",\\\", RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"+\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"4\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"25\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"11\\\", \\\" \\\", \\\
+\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", \
+RowBox[{RowBox[{\\\"aRandomVariate\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"NormalDistribution\\\", \\\"[\\\", RowBox[{\\\"0\\\", \
+\\\",\\\", \\\"1\\\"}], \\\"]\\\"}], \\\",\\\", \\\"401\\\"}], \\\"]\\\"}], \
+\\\"-\\\", RowBox[{\\\"Cos\\\", \\\"[\\\", FractionBox[RowBox[{\\\"3\\\", \
+\\\" \\\", \\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}], \\\"-\\\", \
+RowBox[{\\\"Sin\\\", \\\"[\\\", FractionBox[RowBox[{\\\"9\\\", \\\" \\\", \
+\\\"\[Pi]\\\"}], \\\"50\\\"], \\\"]\\\"}]}], \\\",\\\", RowBox[{\\\"\
+\[LeftSkeleton]\\\", \\\"391\\\", \\\"\[RightSkeleton]\\\"}]}], \\\"}\\\"}], \
+\\\"]\\\"}]\\) to \\!\\(\\*RowBox[{\\\"WaveletScalogram\\\"}]\\) should be a \
+DiscreteWaveletData or ContinuousWaveletData object.\"", 2, 67, 60, 
+   19890849272430825555, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.872695214130378*^9},
+ CellLabel->"",ExpressionUUID->"c8aaa518-acf9-44ed-a2f1-c326b06556cf"]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{1141.2, 574.8},
 WindowMargins->{{-6, Automatic}, {Automatic, 27}},
 PrivateNotebookOptions->{"CloudPublishPath"->"/Published/Wavelets/TP1E1f.nb"},
-FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (August 22, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"261c3e0e-df6c-49c4-8840-4487cbf87d27"
 ]
@@ -378,16 +800,26 @@ Cell[776, 29, 334, 5, 54, "Subsection",ExpressionUUID->"c0a00d2d-8811-4153-8276-
 Cell[CellGroupData[{
 Cell[1135, 38, 286, 5, 38, "CodeText",ExpressionUUID->"10a96d8c-5364-482b-85be-fe3c0ffb552a",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[1424, 45, 632, 16, 67, "Input",ExpressionUUID->"cb5d43df-573f-4be6-8f8a-c00d018d0992",
+Cell[1424, 45, 633, 16, 67, "Input",ExpressionUUID->"cb5d43df-573f-4be6-8f8a-c00d018d0992",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[2059, 63, 6490, 112, 162, "Input",ExpressionUUID->"c007e8fd-a902-42d6-a369-bd50b943d90c",
+Cell[2060, 63, 6101, 97, 124, "Input",ExpressionUUID->"c007e8fd-a902-42d6-a369-bd50b943d90c",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.},
  CellID->324762801],
-Cell[8552, 177, 3366, 88, 238, "Input",ExpressionUUID->"2ddbcd8d-cd67-4ed0-9e34-e0edf1731562",
+Cell[8164, 162, 3597, 93, 257, "Input",ExpressionUUID->"2ddbcd8d-cd67-4ed0-9e34-e0edf1731562",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[11921, 267, 3858, 83, 781, "Output",ExpressionUUID->"b172e99b-8c72-44ed-94bb-31ff76907287",
+Cell[11764, 257, 3639, 74, 781, "Output",ExpressionUUID->"4fdf73bd-0217-4343-8c6a-47c4cb594b35",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
-}, Open  ]]
+}, Open  ]],
+Cell[15418, 334, 4168, 60, 155, "Message",ExpressionUUID->"f61fd5e5-2767-4413-be5f-a327abe20bd2"],
+Cell[19589, 396, 2045, 32, 101, "Message",ExpressionUUID->"5f2bd422-78b9-45eb-bdf3-80084f3106a2"],
+Cell[21637, 430, 3019, 46, 83, "Message",ExpressionUUID->"85ec8f9a-a145-45ea-a86b-1c13f7d5fdc1"],
+Cell[24659, 478, 418, 8, 28, "Message",ExpressionUUID->"34a460b1-40f7-4907-bc31-2be2919540ea"],
+Cell[25080, 488, 1534, 24, 47, "Message",ExpressionUUID->"aa6001b2-8957-4e8b-bb16-96ea89f036d9"],
+Cell[26617, 514, 1534, 24, 47, "Message",ExpressionUUID->"ba1294f5-aa81-4bd3-ab65-73376f95ef2a"],
+Cell[28154, 540, 4129, 60, 134, "Message",ExpressionUUID->"f77d613b-bf24-4c8a-b9d4-a718357656b4"],
+Cell[32286, 602, 3615, 53, 134, "Message",ExpressionUUID->"9ec53346-b06d-4f3f-8db8-c5aeb0fd65c6"],
+Cell[35904, 657, 4206, 60, 155, "Message",ExpressionUUID->"f36e435a-4956-458f-b29d-303033b07843"],
+Cell[40113, 719, 3731, 54, 155, "Message",ExpressionUUID->"c8aaa518-acf9-44ed-a2f1-c326b06556cf"]
 }, Open  ]]
 }, Open  ]]
 }
