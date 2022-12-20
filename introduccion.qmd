@@ -1,0 +1,12 @@
+# Introducción {.unnumbered}
+{{< include _common.qmd >}}
+
+<!-- definicion de serie estacionaria de primer oren y sde segundo orden  ver Hilbert -->
+<!-- metodos para tratar series no estacionarias -->
+<!-- frecuencia instantanea -->
+
+## Transformada Wavelet  {.unnumbered}
+
+## Coherencia {.unnumbered}
+## Transformada de Hilbert-Huang  {.unnumbered}
+

@@ -1,0 +1,2 @@
+# Aplicaciones {.unnumbered}
+{{< include _common.qmd >}}

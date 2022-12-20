@@ -2,7 +2,6 @@
 title: "MAAST"
 author: "A. Verri"
 format: html
-editor: visual
 ---
 
 ## Práctica MAAST
@@ -10,12 +9,13 @@ editor: visual
 ```{r echo=FALSE, message=FALSE,warning=FALSE}
 library(wavelets)
 library(WaveletComp)
+library(data.table)
 ```
 
 ### Espectro de Potencia - `WaveletComp`
 
 ```{r message=FALSE,include=FALSE}
-X = data.table::data.table(x=periodic.series(start.period = 50, length = 1000) + 0.2*rnorm(1000))
+X = data.table(x=periodic.series(start.period = 50, length = 1000) + 0.2*rnorm(1000))
 WT <- WaveletComp::analyze.wavelet(
   my.data=X, my.series=colnames(X)[1],loess.span = 0,dt = 1, dj = 1/250,lowerPeriod = 16,upperPeriod = 128,make.pval = TRUE, n.sim = 10)
 
@@ -40,11 +40,11 @@ Ejemplo paquete
 ```{r}
 library(biwavelet)
 N <- 1000
-x1 <- WaveletComp::periodic.series(start.period = 0, end.period = 2.5*pi,length = N) 
+
 x1=WaveletComp::periodic.series(start.period = 0, end.period = 2*5*pi,length = N) 
 x2=WaveletComp::periodic.series(start.period = 0, end.period = 2*15*pi,length = N) # sin(seq(from=0, to=2*15*pi, length=1000))
 x3=WaveletComp::periodic.series(start.period = 0, end.period = 2*40*pi,length = N) # sin(seq(from=0, to=2*40*pi, length=1000))
-x <- t1+t2+t3
+x <- x1+x2+x3
 t <- 1:N
 DT <- data.table(t=t,x=x) |> as.matrix()
 WT <- biwavelet::wt(DT)

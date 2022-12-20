@@ -1,0 +1,41 @@
+project:
+  type: book
+  
+execute:
+  eval: true
+  echo: false
+  warning: false
+  include: false
+  freeze: auto
+  
+book:
+  title: "Métodos Avanzados para el Análisis de Series Temporales"
+  author: 
+    - "Alumno: Alejandro Verri Kozlowski"
+    - "Instructores: Dra. Rosa Piotrkowski, Dr. Eduardo Zitto"
+  date: "11/10/2022"
+  chapters:
+    - index.qmd
+    - introduccion.qmd
+    - practica.qmd
+    - aplicacion.qmd
+    - references.qmd
+
+bibliography: bib/bib.bib
+csl: csl/nature.csl #mla.csl ieee.csl apa.csl turabian.csl
+
+format:
+  html:
+    toc: true
+    toc-location: left
+    self-contained: false
+    css: css/styles.css
+    theme: cosmo #default,cerulean,cosmo,cyborg,darkly,flatly,journal,litera,lumen,lux,materia,minty,morph,pulse,quartz,sandstone,simplex,sketchy,slate,solar,spacelab,superhero,united,vapor,yeti,zephyr
+    
+editor: 
+  mode: source
+
+crossref:
+  fig-title: "Figura"     # (default is "Figure")
+  tbl-title: "Tabla"     # (default is "Table")
+  title-delim: ":"     # (default is ":")

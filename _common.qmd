@@ -1,0 +1,17 @@
+```{r}
+rm(list=ls())
+library(biwavelet)
+library(data.table)
+library(ggplot2)
+library(flextable)
+set.seed(1)
+# knit options ----
+knitr::opts_chunk$set(
+  # fig.cap = FALSE,# esta opcion produce un FALSE al pie de cada tabla... NO USAR
+  "ft.shadow" = FALSE)
+# flextable  ----
+use_df_printer()
+
+
+```
+
